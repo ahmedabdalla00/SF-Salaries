@@ -2,13 +2,13 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model=joblib.load("./model/linear_model.pkl")
-encoder=joblib.load("./model/label_encoder.pkl")
-scaler=joblib.load("./model/scaler.pkl")
+model=joblib.load("model/linear_model.pkl")
+encoder=joblib.load("model/label_encoder.pkl")
+scaler=joblib.load("model/scaler.pkl")
 
 st.title("\tprediction model")
 
-df=pd.read_csv(r"./datasets\dfc.csv")
+df=pd.read_csv(r"datasets\dfc.csv")
 
 title = st.selectbox("Job Title", df['JobTitle'].unique())
 if title:

@@ -5,7 +5,7 @@ import plotly.express as px
 st.title("SF Dashboard")
 @st.cache_data
 def read():
-    return pd.read_csv(".\datasets\Salaries.csv")
+    return pd.read_csv("datasets\Salaries.csv")
 df=read()
 button= st.button("show sample")
 if button:
