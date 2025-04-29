@@ -12,3 +12,4 @@ st.write("""
 3- Is there any evidence of pay discrimination based on gender in this dataset?\n
 4- How is budget allocated based on different groups and responsibilities?
 """)
+st.image("dataset-cover.jpeg")
