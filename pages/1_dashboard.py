@@ -2,6 +2,9 @@ import streamlit as st
 import joblib
 import pandas as pd
 import plotly.express as px
+
+st.set_page_config(page_title="dashboard",layout="wide")
+
 st.title("SF Dashboard")
 @st.cache_data
 def read():
