@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
+
 model=joblib.load("model/linear_model.pkl")
 encoder=joblib.load("model/label_encoder.pkl")
 scaler=joblib.load("model/scaler.pkl")
