@@ -17,6 +17,7 @@ if button:
 
 col1,col2=st.columns(2)
 with col1:
+   
     st.subheader("departments mean salariy", divider="gray")
     departmentg=df.groupby('department')['TotalPay'].mean().reset_index()
     st.bar_chart(data=departmentg,x="department",y="TotalPay",color="department",horizontal=True,height=400)
@@ -34,6 +35,7 @@ with col1:
     most=df['JobTitle'].value_counts().head(5).reset_index()
     st.bar_chart(data=most,x="JobTitle",y="count",color="JobTitle",x_label="most common jobs",height=400)
 
+    st.subheader("Years Totalpay", divider="gray")
     gg=df.groupby('Year')['TotalPay'].mean().reset_index()
     fig=px.pie(gg,names='Year',values="TotalPay",hole=0.4)
     st.plotly_chart(fig)
