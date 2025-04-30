@@ -8,7 +8,7 @@ st.set_page_config(page_title="dashboard",layout="wide")
 st.title("SF Dashboard")
 @st.cache_data
 def read():
-    return pd.read_csv("datasets\Salaries.csv")
+    return pd.read_csv("datasets/DFD.csv")
 df=read()
 button= st.button("show sample")
 if button:
@@ -17,6 +17,11 @@ if button:
 
 col1,col2=st.columns(2)
 with col1:
+    st.subheader("departments mean salariy", divider="gray")
+    departmentg=df.groupby('department')['TotalPay'].mean().reset_index()
+    st.bar_chart(data=departmentg,x="department",y="TotalPay",color="department",horizontal=True,height=400)
+
+
     st.subheader("top paid jobs", divider="gray")
     group=df.groupby('JobTitle')['TotalPay'].max().sort_values(ascending=False).head(5).reset_index()
     st.bar_chart(data=group,x="JobTitle",y="TotalPay",color="JobTitle",horizontal=True,height=400)
@@ -34,6 +39,11 @@ with col1:
     st.plotly_chart(fig)
     #st.dataframe(group)
 with col2:
+    st.subheader("depatments count", divider="gray")
+    group=df['department'].value_counts().head(5).reset_index()
+    fig=px.pie(group,names='department',values="count",hole=0.4)
+    st.plotly_chart(fig)
+
     st.subheader("least paid jobs", divider="gray")
     group=df.groupby('JobTitle')['TotalPay'].min().sort_values(ascending=False).tail(5).reset_index()
     st.bar_chart(data=group,x="JobTitle",y="TotalPay",color="JobTitle",horizontal=True,height=400)
